@@ -13,3 +13,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Bookmard {
+  id String @id @default(cuid())
+  url String 
+  title String
+  notes String?
+  createAt DateTime @default(now())
+  userId String // clerk
+}
