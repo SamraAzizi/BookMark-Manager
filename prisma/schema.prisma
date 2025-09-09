@@ -14,7 +14,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Bookmard {
+model Bookmark {
   id String @id @default(cuid())
   url String 
   title String

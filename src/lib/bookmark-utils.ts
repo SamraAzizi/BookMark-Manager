@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Bookmark } from "../generated/prisma";
 import { CreateBookmarkData } from "@/types/bookmark";
 import { use } from "react";
 
 const prisma = new PrismaClient();
 
 
-export async function getUserBookmarks(userId: string):Promise<any>{
+export async function getUserBookmarks(userId: string):Promise<Bookmark[]>{
     try{
         const bookmarks = await prisma.bookmark.findMany({
             where: {
@@ -25,7 +25,7 @@ export async function getUserBookmarks(userId: string):Promise<any>{
 }
 }
 
-export async function createUserBookmark(userId: string, data: CreateBookmarkData): Promise<any>{
+export async function createUserBookmark(userId: string, data: CreateBookmarkData): Promise<Bookmark>{
     try{
         if(!data.url|| !data.title){
             throw new Error("URL and title are required");
