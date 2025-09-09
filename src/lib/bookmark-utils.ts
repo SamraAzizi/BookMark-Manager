@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { CreateBookmarkData } from "@/types/bookmark";
+import { use } from "react";
 
 const prisma = new PrismaClient();
 
@@ -44,4 +45,30 @@ export async function createUserBookmark(userId: string, data: CreateBookmarkDat
         console.error("Error creating bookmark: ", error);
         throw new Error("Failed to create bookmark");
     }
+}
+
+export async function deleteUserBookmard(userId:string, bookmarkId: string): Promise<boolean>{
+    try{
+        const bookmark = await prisma.bookmark.findFirst({
+            where: {
+                id: bookmarkId,
+                userId
+            }
+        })
+
+        if (!bookmark){
+            throw new Error("Bookmmard not found or access denied");
+
+        }
+        await prisma.bookmark.delete({
+            where: {id: bookmarkId}
+
+        }
+    )
+    return true;
+    }catch(error){
+        console.error("error deleting bookmark:", error);
+        throw new Error ("failed to delete bookmark")
+    }
+
 }
