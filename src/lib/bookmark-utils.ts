@@ -47,7 +47,7 @@ export async function createUserBookmark(userId: string, data: CreateBookmarkDat
     }
 }
 
-export async function deleteUserBookmard(userId:string, bookmarkId: string): Promise<boolean>{
+export async function deleteUserBookmark(userId:string, bookmarkId: string): Promise<boolean>{
     try{
         const bookmark = await prisma.bookmark.findFirst({
             where: {
