@@ -17,6 +17,41 @@ export function useBookmarks(){
         try{
             setError(null)
             const reponse = await fetch("/api/bookmarks")
+
+            if(!reponse.ok){
+                throw new Error("failed to fetch bookmarks")
+            }
+
+            const data = await reponse.json()
+            setBookmarks(data)
+
+            
+
+            }catch(err){
+                setError(err instanceof Error ? err.message : "An error occured")
+        }finally{
+            setLoading(false)
         }
+    }
+
+    const addBookmark = async (data: CreateBookmarkData) =>{
+        try{
+            setError(null)
+            const reponse = await fetch("/api/bookmarks", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+
+                },
+                body: JSON.stringify(data),
+
+            })
+
+            if (!reponse.ok){
+                throw new Error("Failed to add bookmark")
+
+            }
+        }catch(error){}
+
     }
 }
