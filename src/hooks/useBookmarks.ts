@@ -51,7 +51,16 @@ export function useBookmarks(){
                 throw new Error("Failed to add bookmark")
 
             }
-        }catch(error){}
+            const newBookmark = await reponse.json()
+            setBookmarks((prev) => [newBookmark, ...prev])
+            return newBookmark;
+
+        }catch(err){
+            const errorMessage = err instanceof Error ? err.message : "An error occured"
+            setError(errorMessage)
+        }
 
     }
+
+   
 }
