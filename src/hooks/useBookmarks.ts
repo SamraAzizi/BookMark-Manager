@@ -62,5 +62,29 @@ export function useBookmarks(){
 
     }
 
-   
+    const deleteBookmark = async (id: string) =>{
+        try{
+            setError(null)
+            const reponse = await fetch(`/api/bookmark/${id}`, {method: "DELETE"})
+
+            if (!reponse.ok){
+                throw new Error("Failed to delete bookmark")
+            }
+
+            setBookmarks((prev) => prev.filter((bookmark) => bookmark.id !== id))
+
+            
+        }catch (err){
+            const errorMessage = err instanceof Error ? err.message : "an error occured"
+            setError(errorMessage)
+        }
+    }
+    return {
+        bookmarks, 
+        loading, 
+        error, 
+        addBookmark,
+        deleteBookmark,
+        refetch : fetchBookmarks,
+    }
 }
