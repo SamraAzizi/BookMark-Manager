@@ -52,8 +52,40 @@ export default function Home() {
     return <div>
       <SignedIn>
 
+      <div className="container">
+        <div className={styles["page-header"]}>
+          <div className={styles["header-text"]}>
+            <h1>Bookmark Manager</h1>
+            <p>Organize and manage your bookmarks</p>
+
+          </div>
+          <div className={styles["header-button"]}>
+            <button className="btn btn-primary" onClick={() => setShowAddForm(!showAddForm)}>
+              {showAddForm ? "Cancle": "Add Bookmark"}
+
+            </button>
+
+          </div>
+          
+        </div>
+
+      </div>
+
+
+      {error && <div className={styles["error-message"]}>
+
+        <p>Error: {error}</p>
+
+        <button onClick={refetch} className="btn btn-secondary">
+          Retry
+
+        </button>
+        
+        
+        </div>}
 
       </SignedIn>
+
 
       <SignedOut>
         <div className={styles["Signedout-container"]}>
