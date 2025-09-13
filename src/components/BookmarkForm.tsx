@@ -31,9 +31,27 @@ export default function BookmarkForm({
         }
         onSubmit(formData)
 
-        if(!isEditing){
-            setFormData({})
-        }
+        
 
     }
+
+    return <form onSubmit={handleSubmit} className="form">
+    <h2 className="form-title">
+        Add New Bookmark
+    </h2>
+
+    <div className="form-group">
+        <label htmlFor="url" className="form-label">
+            URL *
+        </label>
+        <input 
+        type="url"
+        id="url"
+        onChange={(e) => setFormData(prev => ({...prev, url:e.target.value}))}
+        
+        
+        />
+ 
+    </div>
+    </form>
 }
