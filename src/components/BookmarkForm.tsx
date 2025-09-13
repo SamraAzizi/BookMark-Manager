@@ -48,10 +48,38 @@ export default function BookmarkForm({
         type="url"
         id="url"
         onChange={(e) => setFormData(prev => ({...prev, url:e.target.value}))}
+        className="form-input"
+        placeholder="https://example.com"
+        required
+        disabled={isSubmitting}
         
         
         />
  
     </div>
+
+
+    <div className="form-group">
+        <label htmlFor="title" className="form-label">
+            Title *
+        </label>
+        <input 
+        type="text"
+        id="title"
+        onChange={(e) => setFormData(prev => ({...prev, title:e.target.value}))}
+        className="form-input"
+        placeholder="Enter Title"
+        required
+        disabled={isSubmitting}
+        
+        
+        />
+ 
+  
+    
+
+
+
+    
     </form>
 }
