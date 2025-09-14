@@ -27,4 +27,20 @@ export default function BookmarkCard({bookmark, onDelete}: BookmarkCardProps){
             return "Invalid URL"
         }
     }
+
+    return <div className="bookmark-card">
+        <div className="bookmark-action">
+            <button onClick={() => onDelete(bookmark.id)} className="action-btn delete" title="Delete Bookmark">🗑️</button>
+
+        </div>
+
+        <h3 className="bookmark-title">{bookmark.title}</h3>
+
+        <a href="bookmark.url" target="_blank" rel="noopener noreferrer" className="bookmark-url">{bookmark.url</a>
+
+
+            <p className="bookmark-meta">
+                {getDomain(bookmark.url)} - {formatDate(bookmark.createdAt)}
+            </p>
+    </div>
 }
