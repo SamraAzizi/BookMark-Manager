@@ -19,9 +19,22 @@ export default function BookmarkList({bookmarks, onDelete}: BookmarkListProps){
         </div>
         );
     }
-    return <div className="bookmark-grid">
-        {bookmarks.map(())}
+    return (
+        <div>
+    <div className="bookmark-grid">
+        {bookmarks.map((bookmark) =>
+        (
+            <BookmarkCard
+            key={bookmark.id}
+            bookmark={bookmark}
+            onDelete={onDelete}
+            />
+        ))}
     
 </div>
+</div>
+
+    )
 }
+
 

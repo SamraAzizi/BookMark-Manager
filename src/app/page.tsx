@@ -5,6 +5,9 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { useBookmarks } from "@/hooks/useBookmarks";
 import { CreateBookmarkData } from "@/types/bookmark";
 import styles from "./page.module.css";
+import BookmarkForm from "@/components/BookmarkForm";
+import BookmarkList from "@/components/BookmarkList";
+
 
 export default function Home() {
 
@@ -72,7 +75,8 @@ export default function Home() {
       </div>
 
 
-      {error && <div className={styles["error-message"]}>
+      {error && (
+        <div className={styles["error-message"]}>
 
         <p>Error: {error}</p>
 
@@ -82,7 +86,15 @@ export default function Home() {
         </button>
         
         
-        </div>}
+        </div>)}
+
+        {showAddForm && <div className={styles["form-section"]}>
+          <BookmarkForm onSubmit={handleAddBookmark} isSubmitting={isSubmitting}/>
+          </div>}
+
+          <BookmarkList bookmarks={bookmarks} onDelete={handleDeleteBookmark}></BookmarkList>
+
+          
 
       </SignedIn>
 
