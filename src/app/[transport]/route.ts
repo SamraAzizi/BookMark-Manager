@@ -30,7 +30,12 @@ const handler = createMcpHandler((server) => {
 
       
     },
-  )
+  ),
+  server.tool("create-bookmark", "Create a new bookamrk for and authenticated user",{
+    url: z.string().describe("The URL of the bookmark to create"),
+    title: z.string().describe("The title of the bookmark"),
+    
+  })
 })
 
 const authHandler = withMcpAuth(
