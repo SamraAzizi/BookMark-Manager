@@ -34,8 +34,31 @@ const handler = createMcpHandler((server) => {
   server.tool("create-bookmark", "Create a new bookamrk for and authenticated user",{
     url: z.string().describe("The URL of the bookmark to create"),
     title: z.string().describe("The title of the bookmark"),
-    
-  })
+    notes: z.string().describe("Additional notes for the bookmark")
+
+
+  },
+  async (parseArgs, {authInfo}) => {
+    try{
+      const userId = authInfo!.extra!.userId! as string
+      const bookmarkData: CreateBookmarkData = {
+        url: Args.url,
+        title: args.title,
+        notes: args.notes || ""
+      }
+
+      const newBookmark = await createUserBookmark(userId, bookmarkData)
+      return {
+        content: [{type: "text", text: `Create new bookmark: ` $JSON.stringify(newBookmark)}]
+
+      }
+      catch(error)
+    }
+  }
+
+
+
+)
 })
 
 const authHandler = withMcpAuth(
