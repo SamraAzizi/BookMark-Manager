@@ -144,3 +144,52 @@ DATABASE_URL="postgresql://username:password@localhost:5432/bookmarkdb"
 - Edit: Click on any bookmark to modify details
 - Delete: Remove bookmarks you no longer need
 - Organize: Use tags to categorize your bookmarks
+
+
+### Search & Filter
+- Search bookmarks by title, URL, or description
+- Filter by tags for quick access
+
+
+
+## Environment Variables for Production
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_...
+CLERK_SECRET_KEY=sk_live_...
+DATABASE_URL="postgresql://..."
+```
+
+## Development
+### Available Scripts
+
+```bash
+# Development
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Lint code
+npm run lint
+
+# Prisma commands
+npx prisma studio    # Database GUI
+npx prisma generate  # Generate Prisma client
+npx prisma db push   # Push schema changes
+```
+
+### Database Management
+```bash
+# Create migration
+npx prisma migrate dev --name init
+
+# Reset database
+npx prisma migrate reset
+
+# Open Prisma Studio
+npx prisma studio
+```
