@@ -70,4 +70,36 @@ npx prisma db push
 # Optional: Seed with sample data
 npx prisma db seed
 ```
-5.
+5. **Run the development server**
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open `http://localhost:3000` with your browser to see the result.
+
+## Project Structure
+```bash
+BookMark-Manager/
+├── prisma/                 # Database schema and migrations
+│   └── schema.prisma      # Prisma data model
+├── src/
+│   ├── app/               # Next.js App Router
+│   │   ├── api/          # API routes
+│   │   ├── (auth)/       # Authentication routes
+│   │   ├── (dashboard)/  # Protected dashboard routes
+│   │   └── globals.css   # Global styles
+│   ├── components/        # React components
+│   │   ├── ui/           # Reusable UI components
+│   │   └── forms/        # Form components
+│   ├── lib/              # Utility libraries
+│   │   ├── auth.ts       # Authentication utilities
+│   │   ├── db.ts         # Database connection
+│   │   └── utils.ts      # Helper functions
+│   └── types/            # TypeScript type definitions
+├── public/               # Static assets
+├── package.json
+├── tsconfig.json
+└── next.config.ts
+```
