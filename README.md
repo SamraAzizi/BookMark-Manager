@@ -193,3 +193,10 @@ npx prisma migrate reset
 # Open Prisma Studio
 npx prisma studio
 ```
+
+## Acknowledgments
+- `Next.js` - The React framework
+- `Clerk` - Authentication
+- `Prisma` - Database ORM
+- `Tailwind CSS` - Styling
+
