@@ -103,3 +103,44 @@ BookMark-Manager/
 ├── tsconfig.json
 └── next.config.ts
 ```
+
+## Configuration
+### Clerk Setup
+
+1. Create an account at `Clerk`
+2. Create a new application
+3. Copy your API keys to the `.env` file
+4. Configure redirect URLs in Clerk dashboard
+
+### Database Configuration
+The project uses SQLite by default. To use PostgreSQL:
+
+1. Update `prisma/schema.prisma`:
+
+```bash
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+2. Update `.env`: 
+```bash
+DATABASE_URL="postgresql://username:password@localhost:5432/bookmarkdb"
+```
+
+## Usage
+
+### Adding Bookmarks
+1. Sign in to your account
+2. Click "Add Bookmark"
+3. Enter URL, title, and optional description/tags
+4. Save to add to your collection
+
+
+### Managing Bookmarks
+
+- View: See all bookmarks in a clean grid layout
+- Edit: Click on any bookmark to modify details
+- Delete: Remove bookmarks you no longer need
+- Organize: Use tags to categorize your bookmarks
